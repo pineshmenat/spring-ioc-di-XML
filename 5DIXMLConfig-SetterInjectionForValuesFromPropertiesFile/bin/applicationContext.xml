@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <context:property-placeholder location="classpath:sport.properties"/>
+
+	<!-- Add entry to enable component scanning -->
+	<bean id="tennisCoach" class="com.spring.demo.TennisCoach">
+		<constructor-arg ref="myFortune"></constructor-arg>
+		<property name="team" value="${foo.team}"/>
+		<property name="email" value="${foo.email}"/>
+	</bean>
+	
+	<!--
+	<bean id="trackCoach" class="com.spring.demo.TrackCoach">
+		<property name="fortuneService" ref="myFortune"></property>
+	</bean>
+	-->
+
+	<bean id="myFortune" class="com.spring.demo.HappyFortuneService"/>	
+</beans>
+
+
+
+
+
